@@ -39,7 +39,7 @@
 					<td><?php echo $student->getBirthday(); ?></td>
 					<td><?php echo $student->getEmail(); ?></td>
 					<td><?php echo $student->getClass(); ?></td>
-					<td><a href="#">Edit</a> | <a href="#">Delete</a></td>
+					<td><a href="#">Edit</a> | <a href="./Controller/deleteController.php?id=<?php echo $student->getId();?>">Delete</a></td>
 				</tr>
 			<?php
 			}  
