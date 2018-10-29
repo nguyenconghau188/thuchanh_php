@@ -29,6 +29,15 @@ function addStudent(Student $student)
 	header("location: addController.php");
 }
 
-
+function editStudent(Student $student)
+{
+	$students = getAllStudents();
+	foreach ($students as $st) {
+		if ($st->getId() == $student->getId()) {
+			$students[$st->getId()] = $student;
+		}
+	}
+	$_SESSION['students'] = $students;
+}
 
  ?>

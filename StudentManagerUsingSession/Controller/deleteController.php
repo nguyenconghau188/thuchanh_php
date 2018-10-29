@@ -16,7 +16,7 @@ if ($id != "") {
 	}
 
 	$_SESSION['students'] = $students;
-	//header("location: ../list-student.php");
+	header("location: ../list-student.php");
 }
 
  ?>

@@ -15,6 +15,7 @@
 	
 	<h2>List Student</h2>
 	<br><br>
+	<a href="add-student.php">Add new Student</a>
 	<div class="col-md-6">
 		<table class="table">
 			<tr>
@@ -29,7 +30,6 @@
 			require 'student-manager.php';
 			require_once 'Model/student.php';
 			$students = getAllStudents();
-			var_dump($students);
 			foreach ($students as $student) 
 			{
 			?>
@@ -39,7 +39,7 @@
 					<td><?php echo $student->getBirthday(); ?></td>
 					<td><?php echo $student->getEmail(); ?></td>
 					<td><?php echo $student->getClass(); ?></td>
-					<td><a href="#">Edit</a> | <a href="./Controller/deleteController.php?id=<?php echo $student->getId();?>">Delete</a></td>
+					<td><a href="edit-student.php?id=<?php echo $student->getId();?>">Edit</a> | <a href="./Controller/deleteController.php?id=<?php echo $student->getId();?>">Delete</a></td>
 				</tr>
 			<?php
 			}  
