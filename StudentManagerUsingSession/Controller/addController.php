@@ -1,0 +1,26 @@
+ <?php 
+
+	require "../student-manager.php";
+	require_once "../Model/student.php";
+
+	$name = isset($_POST['name']) ? $_POST['name'] : false;
+	$birthday = isset($_POST['birthday']) ? $_POST['birthday'] : false;
+	$email = isset($_POST['email']) ? $_POST['email'] : false; 
+	$classStu = isset($_POST['classStu']) ? $_POST['classStu'] : false;
+
+	if ($name) {
+		echo 'kaka';
+		$student = new Student;
+		$student->setId(0);
+		$student->setName($name);
+		$student->setBirthday($birthday);
+		$student->setEmail($email);
+		$student->setClass($classStu);
+
+		addStudent($student);
+	}
+
+
+	var_dump($_SESSION['students']);
+
+?>
