@@ -1,14 +1,36 @@
 <?php 
 
 require 'Model/student.php';
+require 'Systems/connect_sql.php';
 session_start();
 
 
-
+function convertToStudentArray($data)
+{
+	$students = array();
+	foreach ($data as $dt) {
+		$student = new Student();
+		$student->setId($dt["id"]);
+		$student->setName($dt["name"]); 
+		$birthday = $dt["birthday"];
+		$student->setBirthday(DateTime::createFromFormat('Y-m-d', $birthday)->format('d-m-Y'));
+		$student->setEmail($dt["email"]);
+		$student->setClass($dt["class"]);
+		array_push($students, $student);
+	}
+	return $students;
+}
 
 function getAllStudents()
 {
-	return isset($_SESSION['students']) ? $_SESSION['students'] : array();	
+	$db = new DB();
+	$db->connectdb();
+	$sql = "SELECT * FROM students";
+	$data = $db->getData($sql);
+	$db->disconnectdb();
+	$students = convertToStudentArray($data);
+	return $students;
+	//return isset($_SESSION['students']) ? $_SESSION['students'] : array();	
 }
 
 function addStudent(Student $student)

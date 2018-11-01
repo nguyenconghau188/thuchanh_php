@@ -77,7 +77,7 @@
 							<th></th>
 						</tr>
 						<?php 
-						require 'student-manager.php';
+						require_once 'student-manager.php';
 						require_once 'Model/student.php';
 						$students = getAllStudents();
 						foreach ($students as $student) 
