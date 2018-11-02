@@ -47,7 +47,37 @@ class DB
 		}
 	}
 
+	public function getOneData($sql)
+	{
+		if ($this->conn) 
+		{
+			$result = $this->conn->query($sql);
+			if ($result->num_rows >0) 
+			{
+				while ($row = $result->fetch_assoc()) 
+				{
+					return $row;
+				}	
+			}
+		}
+		else 
+		{
+			return 'no connection';
+		}
+	}
+
 	public function insertData($sql)
+	{
+		if ($this->conn) 
+		{
+			if ($this->conn->query($sql) === TRUE) {
+				return TRUE;
+			}
+		}
+		return FALSE;
+	}
+
+	public function editData($sql)
 	{
 		if ($this->conn) 
 		{

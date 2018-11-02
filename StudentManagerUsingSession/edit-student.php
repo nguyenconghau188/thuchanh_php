@@ -70,20 +70,14 @@
 				$id = isset($_GET['id']) ? $_GET['id'] : "";
 				$student = null;
 				if ($id != "") {
-					$students = getAllStudents();
-					foreach ($students as $st) {
-						if ($st->getId() == $id) {
-							$student = $st;
-							break;
-						}
-					}
+					$student = getStudent($id);
 				}
 				?>
 				<h2>Edit Student</h2>
 				<br>
 
 				<div  class="col-sm-8">
-					<form action="./Controller/editController.php" method="POST" name="add-student" id="ad-student" accept-charset="utf-8">
+					<form action="./Controller/editController.php" method="POST" name="edit-student" id="edit-student" accept-charset="utf-8">
 						<input class="form-control hidden" id="id" name="id" value="<?php echo $student->getId();?>">
 						<div class="form-group">
 							<label>Name</label>
@@ -91,7 +85,11 @@
 						</div>
 						<div class="form-group">
 							<label>Birthday</label>
-							<input class="form-control" id="birthday" name="birthday" value="<?php echo $student->getBirthday();?>">
+							<input class="form-control" id="birthday" type="date" name="birthday" value="<?php 
+								$time = strtotime($student->getBirthday());
+								$newformat = date('Y-m-d', $time);
+								echo $newformat;
+							?>">
 						</div>
 						<div class="form-group">
 							<label>Email</label>
@@ -103,7 +101,7 @@
 						</div>
 						<div class="form-group">
 							<!-- <input type="submit" name="calculate" value="Tính"> -->
-							<input  class="form-control" type="submit" name="submitStudent" style="width: 150px; background-color: #4169E1; color: white;" value="Edit"></input>
+							<input  class="form-control" type="button" name="submitStudent" style="width: 150px; background-color: #4169E1; color: white;" value="Edit" onclick="studentSubmit()"></input>
 						</div>
 					</form>
 				</div>
@@ -131,7 +129,6 @@
 			var birthday = $('#birthday').val();
 			var email = $('#email').val();
 			var classStu = $('#classStu').val();
-			alert("validate");
 			if (name == "" || birthday == "" || email == "" || classStu == "") {
 				alert("Please fill in all field!")
 				return false;
@@ -144,9 +141,7 @@
 
 			if (validate()) {
 				alert("submit");
-				$('#add-student').submit(function(){
-					alert("submit");
-				});
+				document.getElementById("edit-student").submit();
 			}
 		}
 
