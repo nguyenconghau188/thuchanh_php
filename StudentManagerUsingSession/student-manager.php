@@ -97,4 +97,20 @@ function editStudent(Student $student)
 
 }
 
+function deleteStudent($id)
+{
+	$db = new DB;
+	$db->connectdb();
+	$sql = "DELETE FROM students WHERE id = '$id'";
+	$result = $db->deleteData($sql);
+	$db->disconnectdb();
+	if (!$result) 
+	{
+		echo "<script>alert('Fails to delete data');</script>";
+	}
+	else {
+		echo "<script>alert('Delete success');</script>";
+	}
+}
+
  ?>

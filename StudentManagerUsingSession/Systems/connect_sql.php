@@ -87,6 +87,17 @@ class DB
 		}
 		return FALSE;
 	}
+
+	public function deleteData($sql)
+	{
+		if ($this->conn) 
+		{
+			if ($this->conn->query($sql) === TRUE) {
+				return TRUE;
+			}
+		}
+		return FALSE;
+	}
 }
 	
 
