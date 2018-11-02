@@ -35,20 +35,30 @@ function getAllStudents()
 
 function addStudent(Student $student)
 {
-	$students = getAllStudents();
-	$id = 0;
-	if (!empty($students)) {
-		$lastStudent = new Student;
-		$lastStudent = end($students);
-		$id = $lastStudent->getId() + 1;
-
-
+	var_dump($student);
+	//$students = getAllStudents();
+	// $id = 0;
+	// if (!empty($students)) {
+	// 	$lastStudent = new Student;
+	// 	$lastStudent = end($students);
+	// 	$id = $lastStudent->getId() + 1;
+	// }
+	//$student->setId($id);
+	//array_push($students, $student);
+	$name = $student->getName();
+	$birthday = $student->getBirthday();
+	$email = $student->getEmail();
+	$classStu = $student->getClass();
+	$db = new DB();
+	$db->connectdb();
+	$sql = "INSERT INTO students (name, birthday, email, class) VALUES ('$name', '$birthday', '$email', '$classStu')";
+	$result = $db->insertData($sql);
+	$db->disconnectdb();
+	if (!$result) 
+	{
+		echo "<script>alert('Fails to insert data');</script>";
 	}
-	$student->setId($id);
-	array_push($students, $student);
-	var_dump($students);
-	$_SESSION['students'] = $students;
-	header("location: addController.php");
+	//header("location: addController.php");
 }
 
 function editStudent(Student $student)

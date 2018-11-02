@@ -9,9 +9,7 @@
 	$classStu = isset($_POST['classStu']) ? $_POST['classStu'] : false;
 
 	if ($name) {
-		echo 'kaka';
 		$student = new Student;
-		$student->setId(0);
 		$student->setName($name);
 		$student->setBirthday($birthday);
 		$student->setEmail($email);

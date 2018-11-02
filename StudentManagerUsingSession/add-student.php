@@ -66,14 +66,14 @@
 				<br>
 
 				<div class="col-sm-8">
-					<form action="./Controller/addController.php" method="POST" name="add-student" id="ad-student" accept-charset="utf-8">
+					<form action="./Controller/addController.php" method="post" name="add-student" id="add-student">
 						<div class="form-group">
 							<label>Name</label>
 							<input class="form-control" id="name" name="name">
 						</div>
 						<div class="form-group">
 							<label>Birthday</label>
-							<input class="form-control" id="birthday" name="birthday">
+							<input class="form-control" id="birthday" type="date" name="birthday">
 						</div>
 						<div class="form-group">
 							<label>Email</label>
@@ -84,11 +84,12 @@
 							<input class="form-control" id="classStu" name="classStu">
 						</div>
 						<div class="form-group">
-							<input  class="form-control" type="submit" name="submitStudent" style="width: 150px; background-color: #4169E1; color: white;" value="Add"></input>
+							<input  class="form-control" type="button" name="submitStudent" style="width: 150px; background-color: #4169E1; color: white;" value="Add" onclick="studentSubmit()">
+								
+							</input>
 						</div>
 					</form>
-				</div>
-				
+				</div>			
 			</div>
 			<!-- end main -->			
 		</div>
@@ -111,7 +112,6 @@
 			var birthday = $('#birthday').val();
 			var email = $('#email').val();
 			var classStu = $('#classStu').val();
-			alert("validate");
 			if (name == "" || birthday == "" || email == "" || classStu == "") {
 				alert("Please fill in all field!")
 				return false;
@@ -123,10 +123,7 @@
 		{
 
 			if (validate()) {
-				alert("submit");
-				$('#add-student').submit(function(){
-					alert("submit");
-				});
+				document.getElementById("add-student").submit();
 			}
 		}
 

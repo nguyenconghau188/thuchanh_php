@@ -27,3 +27,20 @@
 // $conn->close();
 
  ?>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	
+	<form action="./Controller/addController.php" method="post" accept-charset="utf-8">
+		<label>name</label>
+		<input type="text" name="name" value="">
+		<input type="submit" name="btn" value="btnsubmit">
+	</form>
+</body>
+</html>

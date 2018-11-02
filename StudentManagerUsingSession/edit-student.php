@@ -65,7 +65,7 @@
 			<div class="col-sm-8">
 				<?php 
 
-				require 'student-manager.php';
+				require_once 'student-manager.php';
 
 				$id = isset($_GET['id']) ? $_GET['id'] : "";
 				$student = null;
